@@ -24,7 +24,7 @@ def get_context(github_url):
         directory = "/".join(path_segments[4:])
     else:
         branch = repo.default_branch
-        directory = "."
+        directory = ""
 
     context = {"repo": repo_slug, "branch": branch, "dir": directory}
     return context

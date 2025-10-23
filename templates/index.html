@@ -12,15 +12,16 @@
 
 <body>
     <header class="container buffer">
-        <h1 class="fancy">How to deploy {{repo or "[repo]"}} on Cloud Run</h1>
+        <h1 class="fancy">How to deploy {{repo or "a GitHub repo"}} on Cloud Run</h1>
     </header>
 
     <main class="container">
+    {% if repo %}
         Requires <a href="https://git-scm.com/">git</a>, <a href="https://cloud.google.com/sdk/docs/install">gcloud</a>.
         <ul></ul>
 
         <ol>
-            <li>Clone the repo (just the '{{branch or "[branch]"}}' branch):
+            <li>Clone the repo (just the '{{branch or "[branch]"}}' branch) to a folder called "code":
                 <pre><code>git clone -b {{branch or "[branch]"}} --single-branch https://github.com/{{repo or "[repo]"}} code</code></pre>
             </li>
             <li>Deploy the code:
@@ -28,6 +29,10 @@
 
             </li>
         </ol>
+        {% else %}
+        This site is designed to assist in deployment of a GitHub repo.
+        To get started, go to the link in the footer.
+        {%endif%}
         <footer>
             <hr>
             <p>Developed with 🪿 by <a href="https://github.com/glasnt/cotton-eye">@glasnt</a></p>
