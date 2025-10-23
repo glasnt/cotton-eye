@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Deploying {{repo or '[repo]'}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔗</text></svg>">
+</head>
+<style>
+    .buffer {
+        margin-top: 3em
+    }
+</style>
+
+<body>
+    <header class="container buffer">
+        <h1 class="fancy">How to deploy {{repo or "[repo]"}} on Cloud Run</h1>
+    </header>
+
+    <main class="container">
+        Requires <a href="https://git-scm.com/">git</a>, <a href="https://cloud.google.com/sdk/docs/install">gcloud</a>.
+        <ul></ul>
+
+        <ol>
+            <li>Clone the repo (just the '{{branch or "[branch]"}}' branch):
+                <pre><code>git clone -b {{branch or "[branch]"}} --single-branch https://github.com/{{repo or "[repo]"}} code</code></pre>
+            </li>
+            <li>Deploy the code:
+                <pre><code>cd code/{{dir or "[dir]"}}<br>gcloud run deploy</code></pre>
+
+            </li>
+        </ol>
+        <footer>
+            <hr>
+            <p>Developed with 🪿 by <a href="https://github.com/glasnt/cotton-eye">@glasnt</a></p>
+        </footer>
+    </main>
+</body>
+</html>
