@@ -1,14 +1,12 @@
-from flask import Flask, render_template, request
-
 from urllib.parse import urlparse
 
 import github
-
-
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 g = github.Github()
+
 
 def get_context(github_url):
     """From a GitHub URL, return the elements required to use it in git"""
@@ -19,12 +17,12 @@ def get_context(github_url):
 
     repo = g.get_repo(repo_slug)
 
-    if len(path_segments) > 4:
+    if len(path_segments) > 3:
         branch = "/".join(path_segments[3:4])
         directory = "/".join(path_segments[4:])
     else:
         branch = repo.default_branch
-        directory = ""
+        directory = " "
 
     context = {"repo": repo_slug, "branch": branch, "dir": directory}
     return context
